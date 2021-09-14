@@ -1,0 +1,164 @@
+<script>
+
+    // способ задать динамически имя ключа, также можно задавать имя ключа из двух слов и более
+
+    let uniqKey = "V";
+
+    let person = {
+        [uniqKey]: "Vendetta", // динамически задается имя ключа
+        'two-words-and-one': 21, // имя ключа из нескольких слов
+    }
+
+    // console.log(person); // {V: 'Vendetta'}
+
+    // ===========================цикл для объектов
+
+    // for (let key in object) {
+    // тело цикла
+    //}
+
+
+    // Методы объектов
+
+    //Метод Object.keys(obj) - возвращает массив наименований ключей объекта, где obj это объект
+
+    // let obj = {
+    //     a: 1,
+    //     b: "string",
+    //     func: () => "hello!",
+    //     foo() {
+    //         return Object
+    //             .keys(this)
+    //             .filter(key => key != 'func')
+    //             .join(' ')
+    //     }
+    // }
+
+    // console.log(Object.keys(obj)); // ["a", "b", "func"];
+    // console.log(obj.foo());
+
+    //========================Метод Object.values(obj)
+    //Данные метод возращает массив значений ключей объекта obj
+
+    // let obj = {
+    //     a: 1,
+    //     b: 3,
+    //     sum() {
+    //         return a + b;
+    //     },
+    //     func() {
+    //         return Object
+    //             .values(obj)
+    //             .map(values => (!isNaN(values)) ? values * 2 : values = 0)
+    //             .join(' ')
+    //     }
+    // }
+
+    // console.log(obj.func());
+
+
+    //Метод объекта Object.is(a,b) - позволяется сравнивать a и b на эквивалентность
+
+    // let eq = Object.is(10, 'ten'); //false
+    // let eq = Object.is(10, 10); //true
+    // console.log(eq);
+
+    // Метод Object.assign(a,b) позволяет объединять объекты, все ключи объекта b скопируются в объект а, тем самым изменив его
+
+    // let first = {
+    //     a: 2
+    // }
+    // let second = { b: 2 }
+
+    // console.log(Object.assign(first, second)); // {a:2, b: 2}
+    // console.log(first);//{a:2, b:2}
+
+    //Чтобы не изменять объект, используем следующий синтаксис
+
+    // console.log(Object.assign({}, first, second));
+    // console.log(first); // объект first не изменен
+
+    //Что будет если объединять объекты у которых наименования ключей совпадают
+
+    // let a = { a: 2 }, b = { a: 8 }
+
+    // let c = Object.assign({}, a, b);
+    // console.log(c); // {a: 8} свойство просто перезапишется на последнее
+
+
+    // Метод Object.entries(obj) возвращает двумерный массив, типа [[keys, value]]
+
+    let obj = {
+        num: 1,
+        str: 'string',
+        foo() {
+            return a + b;
+        }
+    }
+
+    // console.log(Object.entries(obj));//[['num', 1],['str', 'string'],['foo', ƒ]]
+
+    // Существует обратный относительно Object.entries(obj), метод Object.fromEntries(array),
+    // который приминимает двумерный массив и возвращает объект
+
+    // let array = Object.entries(obj); // получим двумерный массив array, состоящий из ключей и значений
+    // console.log(array);
+    // let object = Object.fromEntries(array); //получим объект object с ключами
+    // console.log(object);
+
+    // удаление свойства в объекте
+
+    // let man = {
+    //     name: "Dennis",
+    //     age: 26,
+    //     job: "Engineer",
+    // }
+
+    // delete man.name; // удаляет свойство name объекта man
+
+    // console.log(man); // {age: 26, job: 'Engineer'}
+
+
+
+
+    //=============================Копирование объекта
+
+    let a = {
+        name: "Denis",
+        surname: "Bezimyanniy",
+        age: 22,
+        achivments: ["son", "brouther", "engineer"],
+        geekName: {
+            nickname: "BreakHead",
+            skill: 80,
+        }
+    }
+
+    // console.log(a);
+
+    let b = a;
+
+    // console.log(b);
+
+    // console.log(Object.is(a, b)); // Object.is позволяет сравнивать объекты
+
+    // b.name = "Ivan";
+
+    // console.log(Object.is(a, b)); // как видим снова true. Так как запись let b = a не копирует объект, а создает новую ссылку b на объект
+
+    // Копирование
+
+    // c = Object.assign(c, a); // ЭТО ПОВЕРХНОСТНОЕ КОПИРОВАНИЕ, ТОЕСТЬ ВЛОЖЕННЫЕ МАССИВЫ И ОБЪЕКТЫ ЭТО ССЫЛКИ
+
+    // c.name = "Denis";
+
+    // console.log(a);
+    // console.log(c);
+
+    // c.achivments[0] = "daugther"; // achivments[0] - перезапишется в обоих объектах
+
+    // console.log(a);
+    // console.log(c);
+
+
+</script>

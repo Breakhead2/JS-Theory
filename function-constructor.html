@@ -1,0 +1,48 @@
+<script>
+
+    //================================Функция-конструктор===========================
+
+    //Функция-конструктор объявлется следующим образом:
+
+    function Man(name, surname, age) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.greeting = function () {
+            console.log(`Привет меня зовут ${this.name} ${this.surname}`);
+        }
+    }
+
+    function createObject(name, surname) {
+        return {
+            name: name,
+            surname: surname,
+        }
+    }
+
+    let denis = new Man("Denis", "Sazonov", 28);
+    let Denis = createObject("Denis", "Sazonov");
+    // console.log(denis);
+    // console.log(Denis);
+    // console.log(typeof denis);
+    // denis.greeting();
+
+    // Главное свойства задаются через оператор присваения "=" и функция называется с БОЛЬШОЙ буквы.
+    // при инициализации не забываем про слово new
+
+    //================Пример с использование деструктуризацией======================================== 
+
+    function Action(type, ...rest) {
+        let [id, message] = rest;
+
+        this.type = type;
+        this.id = id;
+        this.message = message;
+    }
+
+    let action = new Action("NEW_MESSAGE", 2, "Hi!");
+    // console.log(action);
+
+    //Объекты созданные с помощью функций-конструкторов отличаются немного от объектов созданныъ обычными функциями (createObject)
+
+</script>

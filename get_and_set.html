@@ -1,0 +1,46 @@
+<script>
+
+    //===========================Геттеры (get) и Сеттеры (set)
+
+    //геттеры - используются для чтения свойств обьекта
+    //сеттеры - для записи
+
+    let pal = {
+        name: "John",
+        surname: "Smith",
+
+        get fullName() {
+            return `${this.name} ${this.surname}`;
+        },
+
+        set fullName(value) {
+            [this.name, this.surname] = value.split(" ");
+        }
+    }
+
+    // console.log(pal.fullName);  //как видим вызывается как свойство, и так как мы ничего не записываем вызывается метод get
+    pal.fullName = "Ivan Drago";   // записываем данные, сработает метод set и перазпишет ключи объекта pal
+    // console.log(pal.fullName);  //"Ivan Drago"
+
+    //свойство fullName стало виртуальным, его можно и ПРОЧИТАТЬ (get) и ИЗМЕНИТЬ (set)
+
+    //Умные сеттеры
+
+    let user = {
+        nickName: "player",
+
+        get name() {
+            return console.log('Hello ' + this.nickName);
+        },
+
+        set name(value) {
+            (value.length < 4) ? console.log('Имя должно быть больше 4 символов') : this.nickName = value;
+        }
+    }
+
+    // user.name; // player
+    // user.name = 'max'; // ошибка 'Имя должно быть больше 4 символов'
+    // user.name = 'maximus'; // перезапишет свойство nickName у объекта user
+    // user.name; // maximus
+
+</script>

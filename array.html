@@ -1,0 +1,164 @@
+<html>
+
+<div class="#myId"></div>
+
+</html>
+
+<script>
+
+    const array = [1, 2, 3, 4, 5, 6, 7, 10];
+    const people = [
+        { name: "Ivan", age: 15, specialty: "engineer" },
+        { name: "Denis", age: 28, specialty: "programmist" },
+        { name: "Polina", age: 21, specialty: "economist" },
+        { name: "Dmitriy", age: 52, specialty: "military" },
+        { name: "Natalya", age: 50, specialty: "director" },
+    ]
+
+
+    //==========================forEach=====================
+
+    //Метод forEach принимает 3 элемента: элемент массива (element), индекс (index), массив исходный (array)
+    // forEach НЕ СОЗДАЕТ новый массив 
+
+    // array.forEach(element => {
+    //     console.log(element);
+    // });
+
+    // people.forEach(element => {
+    //     console.log(element.age + 5);
+    // });
+
+    // array.forEach((element, index) => console.log(`${index} - ${element}`));
+
+
+    //==========================Map=====================
+
+    //Метод Map принимает 3 элемента: элемент массива (element), индекс (index), массив исходный (array)
+
+    // Map СОЗДАЕТ новый массив 
+
+    // let newArray = array.map(element => {
+    //     return element + 10;
+    // })
+    // console.log(newArray);
+
+    // let newPeople = people.map(element => {
+    //     if (element.age >= 18) {
+    //         Object.assign(element, { status: "adult" })
+    //     } else {
+    //         Object.assign(element, { status: "children" })
+    //     }
+    //     return element;
+    // })
+    // console.log(newPeople);
+
+    //==========================Filter=====================
+
+    //Метод Filter принимает 3 элемента: элемент массива (element), индекс (index), массив исходный (array)
+
+    // Filter СОЗДАЕТ новый массив 
+
+    // let newArr = array.filter(element => element > 5 && element < 8);
+    // console.log(newArr);
+
+    // let newPeopl = people.filter(element => element.age >= 21 && element.age < 40);
+    // console.log(newPeopl)
+
+    //==========================Find=====================
+
+    // let finder = array.find(element => element == 9); // вернет первый элемент массива array который удовлетворяет условия функции колбэк, если такого элемента нет, вернет undefined
+    // console.log(finder);
+
+    //==========================Reduce=====================
+
+    //Метод reduce возвращает число
+
+    // let amount = array.reduce((total, element) => { //total значение которое надо вернуть, изначально оно равно 0 (можно задать любое начальное значение)
+    //     return total + element
+    // }, 0);
+    // console.log(amount);
+
+    // let totalAge = people.reduce((total, element) => {
+    //     return total + element.age;
+    // }, 0);
+    // console.log(totalAge);
+
+    //==========================Sort=====================
+
+    // Метод Sort ИЗМЕНЯЕТ!!! исходный массив, поэтому исходный массив лучше "распоковывать" с помощью "..."
+    // Sort СОЗДАЕТ новый массив 
+
+    // let array2 = [...array].sort((a,b) => a-b); // сортировка от меньшего к большему
+    // let array2 = [...array].sort((a,b) => b-a); // сортировка от большего к меньшему
+    // console.log(array2);
+
+    // логика работы
+    //     function compareFunction( a, b ) {
+    //     if ( a меньше b по заданному критерию сортировки) {
+    //         return -1;  // первый сравниваемый элемент будет расположен по меньшему индексу
+    //     }
+    //     if ( a больше b по заданному критерию сортировки) {
+    //         return 1;  // второй сравниваемый элемент будет расположен по меньшему индексу
+    //     }
+    //     // если первый аргумент равен второму, то элементы массива останутся неизменными 
+    //     // по отношению друг к другу но будут отсортированы по отношению ко всем другим элементам
+    //     return 0;   
+    // }
+
+    //==========================Shift=====================
+
+    //выдаст элемент из НАЧАЛА массива
+
+    // let arrNew = array.shift(); // выдаст элеменнт массива array под 0-ым индексом и изменит исходный массив удалив элемент под 0-ым индексом 
+    // console.log(arrNew);
+    // array.shift(); //удалив элемент под 0-ым индексом
+    // array.shift(); //удалив элемент под 0-ым индексом
+    // console.log(array);
+    // console.log(array.shift()); // выдаст элеменнт массива array под 0-ым индексом
+    // console.log(array.unshift()); // выдаст элемент массива под последним индексом
+    // console.log(array);
+
+
+    //==========================Unshift=====================
+
+    //выдаст элемент из КОНЦА массива
+
+    // let newArr = array.unshift();
+    // console.log(newArr);
+    // console.log(array);
+
+    //==========================Slice=====================
+
+    // let newArr = array.slice(5); // отсекает элемент до 5 индекса включительно
+    // console.log(array);
+    // console.log(newArr);
+
+    // let newArr = array.slice(2, 5); // показывает элементы массива от 2 индекса до 5 индекса отсительно исходного
+    // console.log(array);
+    // console.log(newArr);
+
+    // console.log([...array].slice(0, 5), 6, [...array].slice(5));
+
+    //==========================Splice=====================
+
+    // удаляет элементы массива с указанного индекса и какой кол-во элементов и ИЗМЕНЯЕТ ИСХОДНЫЙ МАССИВ! поэтому лучше распаковывать исходный массив
+
+    // let newArr = [...array].splice(2, 3);
+    // console.log(array);
+    // console.log(newArr);
+
+    //=========================REVERSE()=====================================
+
+    //Данный метод "разворачивает" массив, то есть первый элемент становится последний и так далее
+
+    //напишем пример с разворотом строки
+
+    // function reverseString(str) {
+    //     return str.split('').reverse().join('')
+    // }
+
+    // console.log(reverseString('New York'));// kroY weN
+
+
+</script>

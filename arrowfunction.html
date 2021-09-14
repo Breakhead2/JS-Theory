@@ -1,0 +1,39 @@
+<script>
+
+    //==========================Особенность стрелочных функций=======================
+
+    //Рассмотрим следующий пример:
+
+    let obj = {
+        name: "Denis",
+        surname: "Sazonov",
+        age: 28,
+        function: () => {
+            return `Hello, my name is ${this.name} ${this.surname}`
+        }
+    }
+
+    //При вызове функии "function" в консоле будет следущая запись: Hello, my name is  undefined
+    // console.log(obj.function()); //Hello, my name is  undefined
+
+    //Как мы видим свойства объекта name и surname не были прочитаны, почему?
+    //Дело в том, что у стрелочных функций нет своего контекста, как у классический функций, 
+    //которые записываются через ключевое слово function.
+    //Поэтому свойство this ссылается на РОДИТЕЛЬСКИЙ объект в данном случае это объект WINDOW
+    //в котором отсутсвуют свойства this.name и this.surname поэтому Undefined
+
+    //Остюда главное особенность СТРЕЛОЧНЫЕ ФУНКЦИИ НЕ ИМЕЮТ СВОЙСТВА this, поэтому не применяем this со стрелочными функциями
+
+    // Как это исправить можно поместить стрелочную функицию в тело ассинхронной функции (setTimeout or setInterval), например:
+
+
+    let obj2 = {
+        name: "Denis",
+        surname: "Sazonov",
+        age: 28,
+        greeting() { setTimeout(() => console.log(`Hello my name is ${this.name}`), 500) }
+    }
+
+    // obj2.greeting(); //Hello my name is Denis
+
+</script>
