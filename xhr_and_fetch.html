@@ -9,12 +9,23 @@
 
     // синтаксис:
 
-    let xhr = new XMLHttpRequest();
+    //   let xhr = new XMLHttpRequest();
 
     // откроем запрос, то есть укажем ссылку на сервер,с которым будем работать
 
-    xhr.open("GET", API2, true);
-    console.log(xhr.readyState);
+    //xhr.open(method, url, async) -  async по умолчанию true, это значит запрос ассинхронный
+
+    //method:
+
+    //GET - отправляем запрос и считываем отклик
+    //POST - используем для отправки данных на сервер
+    //PUT - обновление полные
+    //PATCH - обновление частичное
+    //DELETE - удаляет указнные ресурсы
+
+    // xhr.open("GET", API2, true);
+
+    // console.log(xhr.readyState);
     //xhr.readyState  - cтатус запроса
     // 0 - запрос не инициируется
     // 1 - загрузка данных
@@ -22,21 +33,34 @@
     // 3 - идет обмен данными
     // 4 - запрос выполнен
 
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState != 4) {
-            return "Error"
-        }
-        if (xhr.status != 200) {
-            return "Error status is not 200"
-        }
-        else {
-            let data = JSON.parse(xhr.responseText);
-            console.log(data);
-            let users = [...data];
-            users.forEach(user => document.getElementById("users").insertAdjacentHTML("beforeend", `<p>${user.name} ${user.surname}</p>`))
+    // xhr.onreadystatechange = () => {
+    //     if (xhr.readyState != 4) {
+    //         return "Error"
+    //     }
+    //     if (xhr.status != 200) {
+    //         return "Error status is not 200"
+    //     }
+    //     else {
+    //         let data = JSON.parse(xhr.responseText);
+    //         console.log(data);
+    //         let users = [...data];
+    //         users.forEach(user => document.getElementById("users").insertAdjacentHTML("beforeend", `<p>${user.name} ${user.surname}</p>`))
 
-        }
-    }
+    //     }
+    // }
 
-    xhr.send()
+    // xhr.send()
+
+
+
+    //===============================fetch(url)=============================
+
+    //fetch - функция которая выполняет AJAX запрос и возвращает объект promise. По умолчанию это GET запрос
+
+    fetch(API2)
+        .then(response => response.json()) // response - тело запроса, функция json преобразует json в js объект и возвращает promise
+        .then(data => { // data - js объект
+            data.forEach(user => document.getElementById("users")
+                .insertAdjacentHTML("beforeend", `<p>${user.name} ${user.surname}</p>`))
+        })
 </script>
