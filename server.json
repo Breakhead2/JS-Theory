@@ -1,4 +1,4 @@
-"[
+[
 {"id":"1",
 "name":"Ivan",
 "surname":"Ivanov",
@@ -42,5 +42,5 @@
     "house":"1",
     "apartment":"12"
 },
-"status":"active"},
-]"
+"status":"active"}
+]
