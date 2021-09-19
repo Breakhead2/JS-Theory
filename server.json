@@ -1,0 +1,46 @@
+"[
+{"id":"1",
+"name":"Ivan",
+"surname":"Ivanov",
+"age":"23",
+"address":{
+    "city":"Moscow",
+    "street":"Gagarina",
+    "house":"22",
+    "apartment":"100"
+},
+"status":"active"},
+{"id":"2",
+"name":"Dmitriy",
+"surname":"Petrov",
+"age":"25",
+"address":{
+    "city":"Saint-Petersberg",
+    "street":"Nevskaya",
+    "house":"17F",
+    "apartment":"21"
+},
+"status":"inactive"},
+{"id":"3",
+"name":"Denis",
+"surname":"Makarov",
+"age":"27",
+"address":{
+    "city":"Samara",
+    "street":"Pobeda",
+    "house":"7",
+    "apartment":"15"
+},
+"status":"active"},
+{"id":"4",
+"name":"Marina",
+"surname":"Vasina",
+"age":"40",
+"address":{
+    "city":"Kazan",
+    "street":"Baumana",
+    "house":"1",
+    "apartment":"12"
+},
+"status":"active"},
+]"
