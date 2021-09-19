@@ -4,6 +4,7 @@
     // рассмотрит асинхронный запрос на ES-5 XMLHttpRequest
 
     const API = 'https://jsonplaceholder.typicode.com/users'; // api сервера
+    const API2 = 'https://raw.githubusercontent.com/Breakhead2/JS-Theory/main/server.json'; // api сервера
 
 
     // синтаксис:
@@ -12,7 +13,7 @@
 
     // откроем запрос, то есть укажем ссылку на сервер,с которым будем работать
 
-    xhr.open("GET", API, true);
+    xhr.open("GET", API2, true);
     console.log(xhr.readyState);
     //xhr.readyState  - cтатус запроса
     // 0 - запрос не инициируется
@@ -32,7 +33,7 @@
             let data = JSON.parse(xhr.responseText);
             console.log(data);
             let users = [...data];
-            users.forEach(user => document.getElementById("users").insertAdjacentHTML("beforeend", `<p>${user.name} - ${user.email}</p>`))
+            users.forEach(user => document.getElementById("users").insertAdjacentHTML("beforeend", `<p>${user.name} ${user.surname}</p>`))
 
         }
     }
