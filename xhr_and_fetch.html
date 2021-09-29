@@ -3,9 +3,10 @@
 <script>
     // рассмотрит асинхронный запрос на ES-5 XMLHttpRequest
 
+    let users = document.querySelector('#users');
+
     const API = 'https://jsonplaceholder.typicode.com/users'; // api сервера
     const API2 = 'https://raw.githubusercontent.com/Breakhead2/JS-Theory/main/server.json'; // api сервера
-
 
     // синтаксис:
 
@@ -41,7 +42,7 @@
     //         return "Error status is not 200"
     //     }
     //     else {
-    //         let data = JSON.parse(xhr.responseText);
+    //         let data = JSON.parse(xhr.responseText);// привел json строку к js объекту
     //         console.log(data);
     //         let users = [...data];
     //         users.forEach(user => document.getElementById("users").insertAdjacentHTML("beforeend", `<p>${user.name} ${user.surname}</p>`))
@@ -59,10 +60,49 @@
 
     //fetch - функция которая выполняет AJAX запрос и возвращает объект promise. По умолчанию это GET запрос
 
-    fetch(API2)
-        .then(response => response.json()) // response - тело запроса, функция json преобразует json в js объект и возвращает promise
-        .then(data => { // data - js объект
-            data.forEach(user => document.getElementById("users")
-                .insertAdjacentHTML("beforeend", `<p>${user.name} ${user.surname}</p>`))
+    // fetch(API)
+    //     .then(response => {
+    //         console.log(response); // посмотрим свойства объекта встроенного класа Response, обратим внимание на свойсво status и ok
+    //         return response.json();
+    //     }) // response - тело запроса, функция json преобразует json в js объект и возвращает promise
+    //     .then(data => { // data - js объект
+    //         console.log(data);
+    //         data.forEach(user => document.getElementById("users")
+    //             .insertAdjacentHTML("beforeend", `<p>${user.name} ${user.surname}</p>`))
+    //     })
+
+    // //===============POST==============================
+
+    let user = {
+        name: "Leanne Graham",
+    };
+
+    function getJSON() {
+        return fetch(API)
+            .then(response => response.json())
+            .catch(error => console.log(error))
+    }
+
+    function postJSON(object) { // отправка данных для работы с сервером
+
+        return fetch(API, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // пишется без пробелов
+            },
+            body: JSON.stringify(object)
         })
+            .then(response => response.json())
+            .catch(error => console.log(error))
+
+    };
+
+
+    getJSON().then(data => {
+        data.forEach(element =>
+            users.append(` Имя: ${element.name} и id: ${element.id} `))
+    });
+
+
+    postJSON(user).then(data => console.log(data))
 </script>
